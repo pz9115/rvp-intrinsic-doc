@@ -2,10 +2,10 @@
 
 # -- Project information
 
-project = '<RISC-V Docs Template>'
-copyright = '2024, RISC-V International'
+project = '<RISC-V Packed-SIMD Intrinsic Doc>'
+copyright = '2025, RISC-V International'
 author = 'RISC-V International'
-release = '0.1'
+draft = '0.1'
 version = '0.1.0'
 
 # -- General configuration
@@ -21,9 +21,10 @@ extensions = [
 source_suffix = {
     '.rst': 'restructuredtext',
     '.md': 'markdown',
+    '.adoc': 'asciidocument',
 }
 
-master_doc = 'index'
+master_doc = 'simd'
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
