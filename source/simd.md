@@ -781,7 +781,7 @@ Normal mulh*, mulhr*, and mulhrsu handle word-level operations on RV32.
 | `__riscv_pnclipr_hs` | `int32_t __riscv_pnclipr_hs(int64_t rs1, int32_t rs2);` | `rs1` is a **paired register** | Signed narrow clip with rounding on halfword elements (register). |
 | `__riscv_nclipr`     | `int32_t __riscv_nclipr(int64_t rs1, int32_t rs2);`     | `rs1` is a **paired register** | Signed narrow clip with rounding on word elements.                |
 
-### Packed Shift and Arithmetic Instructions(Register-Pair Variant)
+### Packed Shift and Arithmetic Intrinsics(Register-Pair Variant)
 
 | Intrinsic            | Signature                                               | Register Pairing                     | Description                                                            |
 | -------------------- | ------------------------------------------------------- | ------------------------------------ | ---------------------------------------------------------------------- |
@@ -804,7 +804,7 @@ Normal mulh*, mulhr*, and mulhrsu handle word-level operations on RV32.
 | `__riscv_psra_dhs`   | `int64_t __riscv_psra_dhs(int64_t rs1, int32_t rs2);`   | `rd`, `rs1` are **paired registers** | Arithmetic shift right on 16-bit elements.                             |
 | `__riscv_psra_dws`   | `int64_t __riscv_psra_dws(int64_t rs1, int32_t rs2);`   | `rd`, `rs1` are **paired registers** | Arithmetic shift right on 32-bit elements.                             |
 
-### Packed Sign-Extension Instructions (Register-Pair Variant)
+### Packed Sign-Extension Intrinsics (Register-Pair Variant)
 
 | Intrinsic            | Signature                                  | Register Pairing                     | Description                                                       |
 | -------------------- | ------------------------------------------ | ------------------------------------ | ----------------------------------------------------------------- |
@@ -812,7 +812,7 @@ Normal mulh*, mulhr*, and mulhrsu handle word-level operations on RV32.
 | `__riscv_psext_dw_b` | `int64_t __riscv_psext_dw_b(int64_t rs1);` | `rd`, `rs1` are **paired registers** | Sign-extend 8-bit elements into 32-bit words in a register pair.  |
 | `__riscv_psext_dw_h` | `int64_t __riscv_psext_dw_h(int64_t rs1);` | `rd`, `rs1` are **paired registers** | Sign-extend 16-bit elements into 32-bit words in a register pair. |
 
-### Packed Absolute and Addition Instructions (Register-Pair Variant)
+### Packed Absolute and Addition Intrinsics (Register-Pair Variant)
 
 | Intrinsic          | Signature                                             | Register Pairing                     | Description                                                  |
 | ------------------ | ---------------------------------------------- | ------------------------------------ | ------------------------------------------------------------ |
@@ -822,7 +822,7 @@ Normal mulh*, mulhr*, and mulhrsu handle word-level operations on RV32.
 | `__riscv_padd_dhs` | `int64_t __riscv_padd_dhs(int64_t rs1, int32_t rs2);` | `rd`, `rs1` are **paired registers** | Add signed 16-bit elements pairwise between `rs1` and `rs2`. |
 | `__riscv_padd_dws` | `int64_t __riscv_padd_dws(int64_t rs1, int32_t rs2);` | `rd`, `rs1` are **paired registers** | Add 32-bit words between `rs1` and `rs2`.                    |
 
-### Packed Register-Pair Packed Arithmetic Instructions
+### Packed Register-Pair Packed Arithmetic Intrinsics
 
 | Intrinsic           | Signature                                              | Register Pairing                            | Description                        |
 | ------------------- | ------------------------------------------------------ | ------------------------------------------- | ---------------------------------- |
@@ -847,7 +847,7 @@ Normal mulh*, mulhr*, and mulhrsu handle word-level operations on RV32.
 | `__riscv_psub_dw`   | `int64_t __riscv_psub_dw(int64_t rs1, int64_t rs2);`   | `rd`, `rs1`, `rs2` are **paired registers** | Packed 32-bit signed subtraction   |
 | `__riscv_subd`      | `int64_t __riscv_subd(int64_t rs1, int64_t rs2);`      | `rd`, `rs1`, `rs2` are **paired registers** | Doubleword vector subtraction      |
 
-### Packed Register-Pair Packed Pack/Unpack Instructions
+### Packed Register-Pair Packed Pack/Unpack Intrinsics
 
 | Intrinsic            | Signature                                               | Register Pairing                  | Description                                         |
 | -------------------- | ------------------------------------------------------- | --------------------------------- | --------------------------------------------------- |
@@ -860,7 +860,7 @@ Normal mulh*, mulhr*, and mulhrsu handle word-level operations on RV32.
 | `__riscv_ppackt_dh`  | `int64_t __riscv_ppackt_dh(int64_t rs1, int64_t rs2);`  | `rd`, `rs1`, `rs2` are **paired** | Pack top half of 16-bit vectors                     |
 | `__riscv_ppackt_dw`  | `int64_t __riscv_ppackt_dw(int64_t rs1, int64_t rs2);`  | `rd`, `rs1`, `rs2` are **paired** | Pack top half of 32-bit vectors                     |
 
-### Packed Register-Pair Saturating & Accumulating Add/Sub Instructions
+### Packed Register-Pair Saturating & Accumulating Add/Sub Intrinsics
 
 | Intrinsic          | Signature                                             | Register Pairing                  | Description                                              |
 | ------------------ | ----------------------------------------------------- | --------------------------------- | -------------------------------------------------------- |
@@ -871,7 +871,7 @@ Normal mulh*, mulhr*, and mulhrsu handle word-level operations on RV32.
 | `__riscv_paas_dhx` | `int64_t __riscv_paas_dhx(int64_t rs1, int64_t rs2);` | `rd`, `rs1`, `rs2` are **paired** | Packed **Averaging Add then Subtract**                   |
 | `__riscv_pasa_dhx` | `int64_t __riscv_pasa_dhx(int64_t rs1, int64_t rs2);` | `rd`, `rs1`, `rs2` are **paired** | Packed **Averaging Subtract then Add**                   |
 
-### Packed Register-Pair Comparison Instructions 
+### Packed Register-Pair Comparison Intrinsics 
 
 | Intrinsic           | Signature                                              | Register Pairing                  | Description                                       |
 | ------------------- | ------------------------------------------------------ | --------------------------------- | ------------------------------------------------- |
@@ -885,7 +885,7 @@ Normal mulh*, mulhr*, and mulhrsu handle word-level operations on RV32.
 | `__riscv_pmsltu_dh` | `int64_t __riscv_pmsltu_dh(int64_t rs1, int64_t rs2);` | `rd`, `rs1`, `rs2` are **paired** | Packed **unsigned less-than** for 16-bit elements |
 | `__riscv_pmsltu_dw` | `int64_t __riscv_pmsltu_dw(int64_t rs1, int64_t rs2);` | `rd`, `rs1`, `rs2` are **paired** | Packed **unsigned less-than** for 32-bit elements |
 
-### Packed Register-Pair Min/Max Instructions
+### Packed Register-Pair Min/Max Intrinsics
 
 | Intrinsic          | Signature                                             | Register Pairing                  | Description                                    |
 | ------------------ | ----------------------------------------------------- | --------------------------------- | ---------------------------------------------- |
