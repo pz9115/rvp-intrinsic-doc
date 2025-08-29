@@ -10,14 +10,28 @@ These intrinsics perform logical/arithmetic shift left operations with immediate
 
 - sslai is a normal shift operation for RV32 only.
 
-| Intrinsic | Signature | Availability |
-|-----------|-----------|---------------|
-| `__riscv_pslli_b` | `int8_t __riscv_pslli_b(int8_t rs1, int rs2);` | RV32/64 |
-| `__riscv_pslli_h` | `int16_t __riscv_pslli_h(int16_t rs1, int rs2);` | RV32/64 |
-| `__riscv_pslli_w` | `int32_t __riscv_pslli_w(int32_t rs1, int rs2);` | RV64 only |
-| `__riscv_psslai_h` | `int16_t __riscv_psslai_h(int16_t rs1, int rs2);` | RV32/64 |
-| `__riscv_psslai_w` | `int32_t __riscv_psslai_w(int32_t rs1, int rs2);` | RV64 only |
-| `__riscv_sslai` | `int32_t __riscv_sslai(int32_t rs1, int rs2);` | RV32 only |
+#### RV32 Intrinsics
+
+| Intrinsic          | Signature                                             | Description                                                       |
+| ------------------ | ----------------------------------------------------- | ----------------------------------------------------------------- |
+| `__riscv_pslli_b`  | `int8x4_t __riscv_pslli_b(int8x4_t rs1, int rs2);`    | Shift each 8-bit element in `rs1` left by `rs2` bits              |
+| `__riscv_pslli_h`  | `int16x2_t __riscv_pslli_h(int16x2_t rs1, int rs2);`  | Shift each 16-bit element in `rs1` left by `rs2` bits             |
+| `__riscv_psslai_h` | `int16x2_t __riscv_psslai_h(int16x2_t rs1, int rs2);` | Shift each 16-bit element in `rs1` left by an **immediate** `rs2` |
+| `__riscv_sslai`    | `int32_t __riscv_sslai(int32_t rs1, int rs2);`        | Shift a 32-bit word left by an **immediate** `rs2`                |
+
+
+#### RV64 Intrinsics
+
+| Intrinsic          | Signature                                             | Availability |
+| ------------------ | ----------------------------------------------------- | ------------ |
+| Intrinsic          | Signature                                             | Description                                                       |
+| ------------------ | ----------------------------------------------------- | ----------------------------------------------------------------- |
+| `__riscv_pslli_b`  | `int8x8_t __riscv_pslli_b(int8x8_t rs1, int rs2);`    | Shift each 8-bit element in `rs1` left by `rs2` bits              |
+| `__riscv_pslli_h`  | `int16x4_t __riscv_pslli_h(int16x4_t rs1, int rs2);`  | Shift each 16-bit element in `rs1` left by `rs2` bits             |
+| `__riscv_pslli_w`  | `int32x2_t __riscv_pslli_w(int32x2_t rs1, int rs2);`  | Shift each 32-bit element in `rs1` left by `rs2` bits             |
+| `__riscv_psslai_h` | `int16x4_t __riscv_psslai_h(int16x4_t rs1, int rs2);` | Shift each 16-bit element in `rs1` left by an **immediate** `rs2` |
+| `__riscv_psslai_w` | `int32x2_t __riscv_psslai_w(int32x2_t rs1, int rs2);` | Shift each 32-bit element in `rs1` left by an **immediate** `rs2` |
+
 
 ### Packed Immediate Load intrinsics
 
@@ -29,12 +43,18 @@ These intrinsics load a constant immediate value directly into a register:
 
 - pli.w: Loads a 32-bit immediate into a word element (only on RV64).
 
-| Intrinsic         | Signature                                   | Availability |
-|-------------------|---------------------------------------------|--------------|
-| `__riscv_pli_b`   | `int8_t __riscv_pli_b(int imm);` | RV32/64      |
-| `__riscv_pli_h`   | `int16_t __riscv_pli_h(int imm);` | RV32/64      |
-| `__riscv_pli_w`   | `int32_t __riscv_pli_w(int imm);` | RV64 only    |
+#### RV32 Intrinsics
+| Intrinsic       | Signature                           | Description                                   |
+| --------------- | ----------------------------------- | --------------------------------------------- |
+| `__riscv_pli_b` | `int8x4_t __riscv_pli_b(int imm);`  | Load immediate `imm` into all 8-bit elements  |
+| `__riscv_pli_h` | `int16x2_t __riscv_pli_h(int imm);` | Load immediate `imm` into all 16-bit elements |
 
+#### RV64 Intrinsics
+| Intrinsic       | Signature                           | Description                                   |
+| --------------- | ----------------------------------- | --------------------------------------------- |
+| `__riscv_pli_b` | `int8x8_t __riscv_pli_b(int imm);`  | Load immediate `imm` into all 8-bit elements  |
+| `__riscv_pli_h` | `int16x4_t __riscv_pli_h(int imm);` | Load immediate `imm` into all 16-bit elements |
+| `__riscv_pli_w` | `int32x2_t __riscv_pli_w(int imm);` | Load immediate `imm` into all 32-bit elements |
 
 ### Packed Sign Extension intrinsics
 
@@ -46,12 +66,17 @@ These intrinsics performs sign-extension of a smaller type to a larger one:
 
 - psext.w.h: Sign-extends a 16-bit value to 32 bits (RV64 only).
 
-| Intrinsic           | Signature                                  | Availability |
-| ------------------- | ------------------------------------------ | ------------ |
-| `__riscv_psext_h_b` | `int16_t __riscv_psext_h_b(int8_t rs1);`  | RV32/64      |
-| `__riscv_psext_w_b` | `int32_t __riscv_psext_w_b(int8_t rs1);`  | RV64 only    |
-| `__riscv_psext_w_h` | `int32_t __riscv_psext_w_h(int16_t rs1);` | RV64 only    |
+#### RV32 Intrinsics
+| Intrinsic           | Signature                                    | Description                                        |
+| ------------------- | -------------------------------------------- | -------------------------------------------------- |
+| `__riscv_psext_h_b` | `int16x2_t __riscv_psext_h_b(int8x4_t rs1);` | Sign-extend each 8-bit element of `rs1` to 16 bits |
 
+#### RV64 Intrinsics
+| Intrinsic           | Signature                                     | Description                                         |
+| ------------------- | --------------------------------------------- | --------------------------------------------------- |
+| `__riscv_psext_h_b` | `int16x4_t __riscv_psext_h_b(int8x8_t rs1);`  | Sign-extend each 8-bit element of `rs1` to 16 bits  |
+| `__riscv_psext_w_b` | `int32x2_t __riscv_psext_w_b(int8x8_t rs1);`  | Sign-extend each 8-bit element of `rs1` to 32 bits  |
+| `__riscv_psext_w_h` | `int32x2_t __riscv_psext_w_h(int16x4_t rs1);` | Sign-extend each 16-bit element of `rs1` to 32 bits |
 
 ### Packed Load Upper Immediate intrinsics
 
@@ -61,10 +86,16 @@ These intrinsics load an immediate value into the upper bits of a register:
 
 - plui.w: Loads a 32-bit upper immediate into a word element (RV64 only).
 
-| Intrinsic        | Signature                          | Availability |
-| ---------------- | ---------------------------------- | ------------ |
-| `__riscv_plui_h` | `int16_t __riscv_plui_h(int imm);` | RV32/64      |
-| `__riscv_plui_w` | `int32_t __riscv_plui_w(int imm);` | RV64 only    |
+#### RV32 Intrinsics
+| Intrinsic        | Signature                            | Description                                         |
+| ---------------- | ------------------------------------ | --------------------------------------------------- |
+| `__riscv_plui_h` | `int16x2_t __riscv_plui_h(int imm);` | Load upper immediate `imm` into all 16-bit elements |
+
+#### RV64 Intrinsics
+| Intrinsic        | Signature                            | Description                                         |
+| ---------------- | ------------------------------------ | --------------------------------------------------- |
+| `__riscv_plui_h` | `int16x4_t __riscv_plui_h(int imm);` | Load upper immediate `imm` into all 16-bit elements |
+| `__riscv_plui_w` | `int32x2_t __riscv_plui_w(int imm);` | Load upper immediate `imm` into all 32-bit elements |
 
 ### Packed Shift Left Register intrinsics
 
@@ -92,11 +123,18 @@ These intrinsics perform packed signed addition on subword elements:
 
 - padd.ws: Adds 32-bit elements in parallel (RV64 only).
 
-| Intrinsic         | Signature                                            | Availability |
-| ----------------- | ---------------------------------------------------- | ------------ |
-| `__riscv_padd_bs` | `int8_t __riscv_padd_bs(int8_t rs1, int8_t rs2);`    | RV32/64      |
-| `__riscv_padd_hs` | `int16_t __riscv_padd_hs(int16_t rs1, int16_t rs2);` | RV32/64      |
-| `__riscv_padd_ws` | `int32_t __riscv_padd_ws(int32_t rs1, int32_t rs2);` | RV64 only    |
+#### RV32 Intrinsics
+| Intrinsic         | Signature                                                  | Description                       |
+| ----------------- | ---------------------------------------------------------- | --------------------------------- |
+| `__riscv_padd_bs` | `int8x4_t __riscv_padd_bs(int8x4_t rs1, int8x4_t rs2);`    | Saturating add of 8-bit elements  |
+| `__riscv_padd_hs` | `int16x2_t __riscv_padd_hs(int16x2_t rs1, int16x2_t rs2);` | Saturating add of 16-bit elements |
+
+#### RV64 Intrinsics
+| Intrinsic         | Signature                                                  | Description                       |
+| ----------------- | ---------------------------------------------------------- | --------------------------------- |
+| `__riscv_padd_bs` | `int8x8_t __riscv_padd_bs(int8x8_t rs1, int8x8_t rs2);`    | Saturating add of 8-bit elements  |
+| `__riscv_padd_hs` | `int16x4_t __riscv_padd_hs(int16x4_t rs1, int16x4_t rs2);` | Saturating add of 16-bit elements |
+| `__riscv_padd_ws` | `int32x2_t __riscv_padd_ws(int32x2_t rs1, int32x2_t rs2);` | Saturating add of 32-bit elements |
 
 ### Packed Saturating Arithmetic Shift intrinsics
 
@@ -106,16 +144,23 @@ These intrinsics perform saturating arithmetic shift operations, with or without
 
 - psshar.* and shar/sshar: Saturating right shifts (with rounding).
 
-| Intrinsic           | Signature                                              | Availability |
-| ------------------- | ------------------------------------------------------ | ------------ |
-| `__riscv_pssha_hs`  | `int16_t __riscv_pssha_hs(int16_t rs1, int16_t rs2);`  | RV32/64      |
-| `__riscv_pssha_ws`  | `int32_t __riscv_pssha_ws(int32_t rs1, int32_t rs2);`  | RV64 only    |
-| `__riscv_sha`       | `int32_t __riscv_sha(int32_t rs1, int32_t rs2);`       | RV64 only    |
-| `__riscv_ssha`      | `int32_t __riscv_ssha(int32_t rs1, int32_t rs2);`      | RV32 only    |
-| `__riscv_psshar_hs` | `int16_t __riscv_psshar_hs(int16_t rs1, int16_t rs2);` | RV32/64      |
-| `__riscv_psshar_ws` | `int32_t __riscv_psshar_ws(int32_t rs1, int32_t rs2);` | RV64 only    |
-| `__riscv_shar`      | `int32_t __riscv_shar(int32_t rs1, int32_t rs2);`      | RV64 only    |
-| `__riscv_sshar`     | `int32_t __riscv_sshar(int32_t rs1, int32_t rs2);`     | RV32 only    |
+#### RV32 Intrinsics
+| Intrinsic           | Signature                                                    | Description                                                          |
+| ------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `__riscv_pssha_hs`  | `int16x2_t __riscv_pssha_hs(int16x2_t rs1, int16x2_t rs2);`  | Per-element saturating arithmetic right shift (16-bit)               |
+| `__riscv_ssha`      | `int32_t __riscv_ssha(int32_t rs1, int32_t rs2);`            | Scalar saturating arithmetic right shift (32-bit)                    |
+| `__riscv_psshar_hs` | `int16x2_t __riscv_psshar_hs(int16x2_t rs1, int16x2_t rs2);` | Per-element saturating arithmetic right shift with rounding (16-bit) |
+| `__riscv_sshar`     | `int32_t __riscv_sshar(int32_t rs1, int32_t rs2);`           | Scalar saturating arithmetic right shift with rounding (32-bit)      |
+
+#### RV64 Intrinsics
+| Intrinsic           | Signature                                                    | Description                                                          |
+| ------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------- |
+| `__riscv_pssha_hs`  | `int16x4_t __riscv_pssha_hs(int16x4_t rs1, int16x4_t rs2);`  | Per-element saturating arithmetic right shift (16-bit)               |
+| `__riscv_pssha_ws`  | `int32x2_t __riscv_pssha_ws(int32x2_t rs1, int32x2_t rs2);`  | Per-element saturating arithmetic right shift (32-bit)               |
+| `__riscv_sha`       | `int32x2_t __riscv_sha(int32x2_t rs1, int32x2_t rs2);`       | Scalar arithmetic right shift (32-bit)                               |
+| `__riscv_psshar_hs` | `int16x4_t __riscv_psshar_hs(int16x4_t rs1, int16x4_t rs2);` | Per-element saturating arithmetic right shift with rounding (16-bit) |
+| `__riscv_psshar_ws` | `int32x2_t __riscv_psshar_ws(int32x2_t rs1, int32x2_t rs2);` | Per-element saturating arithmetic right shift with rounding (32-bit) |
+| `__riscv_shar`      | `int32x2_t __riscv_shar(int32x2_t rs1, int32x2_t rs2);`      | Scalar arithmetic right shift (32-bit)                               |
 
 ### Packed Shift Right Logical Immediate intrinsics
 
@@ -127,11 +172,18 @@ psrli.h: 16-bit packed shift.
 
 psrli.w: 32-bit packed shift (RV64 only).
 
-| Intrinsic         | Signature                                          | Availability |
-| ----------------- | -------------------------------------------------- | ------------ |
-| `__riscv_psrli_b` | `int8_t __riscv_psrli_b(int8_t rs1, int shamt);`   | RV32/64      |
-| `__riscv_psrli_h` | `int16_t __riscv_psrli_h(int16_t rs1, int shamt);` | RV32/64      |
-| `__riscv_psrli_w` | `int32_t __riscv_psrli_w(int32_t rs1, int shamt);` | RV64 only    |
+#### RV32 Intrinsics
+| Intrinsic         | Signature                                              | Description                                                             |
+| ----------------- | ------------------------------------------------------ | ----------------------------------------------------------------------- |
+| `__riscv_psrli_b` | `int8x4_t __riscv_psrli_b(int8x4_t rs1, int shamt);`   | Per-element logical right shift of 8-bit elements by immediate `shamt`  |
+| `__riscv_psrli_h` | `int16x2_t __riscv_psrli_h(int16x2_t rs1, int shamt);` | Per-element logical right shift of 16-bit elements by immediate `shamt` |
+
+#### RV64 Intrinsics
+| Intrinsic         | Signature                                              | Description                                                             |
+| ----------------- | ------------------------------------------------------ | ----------------------------------------------------------------------- |
+| `__riscv_psrli_b` | `int8x8_t __riscv_psrli_b(int8x8_t rs1, int shamt);`   | Per-element logical right shift of 8-bit elements by immediate `shamt`  |
+| `__riscv_psrli_h` | `int16x4_t __riscv_psrli_h(int16x4_t rs1, int shamt);` | Per-element logical right shift of 16-bit elements by immediate `shamt` |
+| `__riscv_psrli_w` | `int32x2_t __riscv_psrli_w(int32x2_t rs1, int shamt);` | Per-element logical right shift of 32-bit elements by immediate `shamt` |
 
 ### Packed Unsigned Saturating Immediate intrinsics
 
@@ -141,12 +193,18 @@ These intrinsics perform unsigned saturating operations with immediate limits:
 
 - usati: Normal unsigned saturate operation for RV32 and RV64.
 
-| Intrinsic              | Signature                                           | Availability |
-| ---------------------- | --------------------------------------------------- | ------------ |
-| `__riscv_pusati_h`     | `uint16_t __riscv_pusati_h(uint16_t rs1, int imm);` | RV32/64      |
-| `__riscv_pusati_w`     | `uint32_t __riscv_pusati_w(uint32_t rs1, int imm);` | RV64 only    |
-| `__riscv_usati` (RV32) | `uint32_t __riscv_usati(uint32_t rs1, int imm);`    | RV32 only    |
-| `__riscv_usati` (RV64) | `uint64_t __riscv_usati(uint64_t rs1, int imm);`    | RV64 only    |
+#### RV32 Intrinsics
+| Intrinsic          | Signature                                               | Description                                                           |
+| ------------------ | ------------------------------------------------------- | --------------------------------------------------------------------- |
+| `__riscv_pusati_h` | `uint16x2_t __riscv_pusati_h(uint16x2_t rs1, int imm);` | Per-element unsigned saturating add of 16-bit elements with immediate |
+| `__riscv_usati`    | `uint32_t __riscv_usati(uint32_t rs1, int imm);`        | Scalar unsigned saturating add (32-bit) with immediate                |
+
+#### RV64 Intrinsics
+| Intrinsic          | Signature                                               | Description                                                           |
+| ------------------ | ------------------------------------------------------- | --------------------------------------------------------------------- |
+| `__riscv_pusati_h` | `uint16x4_t __riscv_pusati_h(uint16x4_t rs1, int imm);` | Per-element unsigned saturating add of 16-bit elements with immediate |
+| `__riscv_pusati_w` | `uint32x2_t __riscv_pusati_w(uint32x2_t rs1, int imm);` | Per-element unsigned saturating add of 32-bit elements with immediate |
+| `__riscv_usati`    | `uint64_t __riscv_usati(uint64_t rs1, int imm);`        | Scalar unsigned saturating add (64-bit) with immediate                |
 
 ### Packed Arithmetic Shift Right Immediate intrinsics
 
@@ -158,15 +216,23 @@ These intrinsics perform arithmetic right shifts with immediate values:
 
 - srari: Normal arithmetic right shift for RV32 and RV64.
 
-| Intrinsic              | Signature                                           | Availability |
-| ---------------------- | --------------------------------------------------- | ------------ |
-| `__riscv_psrai_b`      | `int8_t __riscv_psrai_b(int8_t rs1, int shamt);`    | RV32/64      |
-| `__riscv_psrai_h`      | `int16_t __riscv_psrai_h(int16_t rs1, int shamt);`  | RV32/64      |
-| `__riscv_psrai_w`      | `int32_t __riscv_psrai_w(int32_t rs1, int shamt);`  | RV64 only    |
-| `__riscv_psrari_h`     | `int16_t __riscv_psrari_h(int16_t rs1, int shamt);` | RV32/64      |
-| `__riscv_psrari_w`     | `int32_t __riscv_psrari_w(int32_t rs1, int shamt);` | RV64 only    |
-| `__riscv_srari` (RV32) | `int32_t __riscv_srari(int32_t rs1, int shamt);`    | RV32 only    |
-| `__riscv_srari` (RV64) | `int64_t __riscv_srari(int64_t rs1, int shamt);`    | RV64 only    |
+#### RV32 Intrinsics
+| Intrinsic          | Signature                                               | Description                                                                      |
+| ------------------ | ------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `__riscv_psrai_b`  | `int8x4_t __riscv_psrai_b(int8x4_t rs1, int shamt);`    | Per-element arithmetic right shift of 8-bit elements by immediate                |
+| `__riscv_psrai_h`  | `int16x2_t __riscv_psrai_h(int16x2_t rs1, int shamt);`  | Per-element arithmetic right shift of 16-bit elements by immediate               |
+| `__riscv_psrari_h` | `int16x2_t __riscv_psrari_h(int16x2_t rs1, int shamt);` | Per-element arithmetic right shift with rounding of 16-bit elements by immediate |
+| `__riscv_srari`    | `int32_t __riscv_srari(int32_t rs1, int shamt);`        | Scalar arithmetic right shift (32-bit) by immediate                              |
+
+#### RV64 Intrinsics
+| Intrinsic          | Signature                                               | Description                                                                      |
+| ------------------ | ------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `__riscv_psrai_b`  | `int8x8_t __riscv_psrai_b(int8x8_t rs1, int shamt);`    | Per-element arithmetic right shift of 8-bit elements by immediate                |
+| `__riscv_psrai_h`  | `int16x4_t __riscv_psrai_h(int16x4_t rs1, int shamt);`  | Per-element arithmetic right shift of 16-bit elements by immediate               |
+| `__riscv_psrai_w`  | `int32x2_t __riscv_psrai_w(int32x2_t rs1, int shamt);`  | Per-element arithmetic right shift of 32-bit elements by immediate               |
+| `__riscv_psrari_h` | `int16x4_t __riscv_psrari_h(int16x4_t rs1, int shamt);` | Per-element arithmetic right shift with rounding of 16-bit elements by immediate |
+| `__riscv_psrari_w` | `int32x2_t __riscv_psrari_w(int32x2_t rs1, int shamt);` | Per-element arithmetic right shift with rounding of 32-bit elements by immediate |
+| `__riscv_srari`    | `int64_t __riscv_srari(int64_t rs1, int shamt);`        | Scalar arithmetic right shift (64-bit) by immediate                              |
 
 ### Packed Signed Saturating Immediate intrinsics
 
