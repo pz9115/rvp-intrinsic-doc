@@ -22,8 +22,6 @@ These intrinsics perform logical/arithmetic shift left operations with immediate
 
 #### RV64 Intrinsics
 
-| Intrinsic          | Signature                                             | Availability |
-| ------------------ | ----------------------------------------------------- | ------------ |
 | Intrinsic          | Signature                                             | Description                                                       |
 | ------------------ | ----------------------------------------------------- | ----------------------------------------------------------------- |
 | `__riscv_pslli_b`  | `int8x8_t __riscv_pslli_b(int8x8_t rs1, int rs2);`    | Shift each 8-bit element in `rs1` left by `rs2` bits              |
