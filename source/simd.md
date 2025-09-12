@@ -544,13 +544,13 @@ These intrinsics compute packed element-wise difference followed by summation wi
 #### RV32 Intrinsics
 | Intrinsic             | Signature                                                                     | Description                                              |
 | --------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------- |
-| `__riscv_pdifsumu_b`  | `uint8x4_t __riscv_pdifsumu_b(uint8x4_t rs1, uint8x4_t rs2, uint8x4_t rs3);`  | Packed unsigned difference and sum of bytes              |
+| `__riscv_pdifsumu_b`  | `uint8x4_t __riscv_pdifsumu_b(uint8x4_t rs1, uint8x4_t rs2);`                 | Packed unsigned difference and sum of bytes              |
 | `__riscv_pdifsumau_b` | `uint8x4_t __riscv_pdifsumau_b(uint8x4_t rs1, uint8x4_t rs2, uint8x4_t rs3);` | Packed unsigned difference, sum, and accumulate of bytes |
 
 #### RV64 Intrinsics
 | Intrinsic             | Signature                                                                     | Description                                              |
 | --------------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------- |
-| `__riscv_pdifsumu_b`  | `uint8x8_t __riscv_pdifsumu_b(uint8x8_t rs1, uint8x8_t rs2, uint8x8_t rs3);`  | Packed unsigned difference and sum of bytes              |
+| `__riscv_pdifsumu_b`  | `uint8x8_t __riscv_pdifsumu_b(uint8x8_t rs1, uint8x8_t rs2);`                 | Packed unsigned difference and sum of bytes              |
 | `__riscv_pdifsumau_b` | `uint8x8_t __riscv_pdifsumau_b(uint8x8_t rs1, uint8x8_t rs2, uint8x8_t rs3);` | Packed unsigned difference, sum, and accumulate of bytes |
 
 ### Packed Shift-and-Add (SH1ADD) Intrinsics
@@ -694,6 +694,34 @@ supporting various element widths (byte, halfword, word) and signed/unsigned var
 They are heavily used in vectorized DSP and signal processing to perform element-wise multiply-accumulate operations efficiently.
 
 #### RV32 Intrinsics
+| Intrinsic               | Signature                                                        | Description                                     |
+| ----------------------- | ---------------------------------------------------------------- | ----------------------------------------------- |
+| `__riscv_pm2add_h`      | `int16x2_t __riscv_pm2add_h(int16x2_t rs1, int16x2_t rs2);`      | Packed multiply-add (halfwords)                 |
+| `__riscv_pm4add_b`      | `int8x4_t  __riscv_pm4add_b(int8x4_t rs1, int8x4_t rs2);`        | Packed multiply-add (bytes)                     |
+| `__riscv_pm2adda_h`     | `int16x2_t __riscv_pm2adda_h(int16x2_t rs1, int16x2_t rs2);`     | Packed multiply-add accumulate (halfwords)      |
+| `__riscv_pm4adda_b`     | `int8_t __riscv_pm4adda_b(int8_t rs1, int8_t rs2);`        | RV32/64      |
+| `__riscv_pm2add_hx`     | `int16_t __riscv_pm2add_hx(int16_t rs1, int16_t rs2);`     | RV32/64      |
+| `__riscv_pm2adda_hx`    | `int16_t __riscv_pm2adda_hx(int16_t rs1, int16_t rs2);`    | RV32/64      |
+| `__riscv_pm2addu_h`     | `uint16_t __riscv_pm2addu_h(uint16_t rs1, uint16_t rs2);`  | RV32/64      |
+| `__riscv_pm4addu_b`     | `uint8_t __riscv_pm4addu_b(uint8_t rs1, uint8_t rs2);`     | RV32/64      |
+| `__riscv_pm2addau_h`    | `uint16_t __riscv_pm2addau_h(uint16_t rs1, uint16_t rs2);` | RV32/64      |
+| `__riscv_pm4addau_b`    | `uint8_t __riscv_pm4addau_b(uint8_t rs1, uint8_t rs2);`    | RV32/64      |
+| `__riscv_pmq2add_h`     | `int16_t __riscv_pmq2add_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
+| `__riscv_pmqr2add_h`    | `int16_t __riscv_pmqr2add_h(int16_t rs1, int16_t rs2);`    | RV32/64      |
+| `__riscv_pmq2adda_h`    | `int16_t __riscv_pmq2adda_h(int16_t rs1, int16_t rs2);`    | RV32/64      |
+| `__riscv_pmqr2adda_h`   | `int16_t __riscv_pmqr2adda_h(int16_t rs1, int16_t rs2);`   | RV32/64      |
+| `__riscv_pm2sub_h`      | `int16_t __riscv_pm2sub_h(int16_t rs1, int16_t rs2);`      | RV32/64      |
+| `__riscv_pm2sadd_h`     | `int16_t __riscv_pm2sadd_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
+| `__riscv_pm2suba_h`     | `int16_t __riscv_pm2suba_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
+| `__riscv_pm2sub_hx`     | `int16_t __riscv_pm2sub_hx(int16_t rs1, int16_t rs2);`     | RV32/64      |
+| `__riscv_pm2sadd_hx`    | `int16_t __riscv_pm2sadd_hx(int16_t rs1, int16_t rs2);`    | RV32/64      |
+| `__riscv_pm2suba_hx`    | `int16_t __riscv_pm2suba_hx(int16_t rs1, int16_t rs2);`    | RV32/64      |
+| `__riscv_pm2addsu_h`    | `int16_t __riscv_pm2addsu_h(int16_t rs1, int16_t rs2);`    | RV32/64      |
+| `__riscv_pm4addsu_b`    | `int8_t __riscv_pm4addsu_b(int8_t rs1, int8_t rs2);`       | RV32/64      |
+| `__riscv_pm2addasu_h`   | `int16_t __riscv_pm2addasu_h(int16_t rs1, int16_t rs2);`   | RV32/64      |
+| `__riscv_pm4addasu_b`   | `int8_t __riscv_pm4addasu_b(int8_t rs1, int8_t rs2);`      | RV32/64      |
+| `__riscv_mqacc_h01`     | `int16_t __riscv_mqacc_h01(int16_t rs1, int16_t rs2);`     | RV32/64      |
+| `__riscv_mqracc_h01`    | `int16_t __riscv_mqracc_h01(int16_t rs1, int16_t rs2);`    | RV32/64      |
 
 #### RV64 Intrinsics
 
