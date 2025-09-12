@@ -694,91 +694,92 @@ supporting various element widths (byte, halfword, word) and signed/unsigned var
 They are heavily used in vectorized DSP and signal processing to perform element-wise multiply-accumulate operations efficiently.
 
 #### RV32 Intrinsics
-| Intrinsic               | Signature                                                        | Description                                     |
-| ----------------------- | ---------------------------------------------------------------- | ----------------------------------------------- |
-| `__riscv_pm2add_h`      | `int16x2_t __riscv_pm2add_h(int16x2_t rs1, int16x2_t rs2);`      | Packed multiply-add (halfwords)                 |
-| `__riscv_pm4add_b`      | `int8x4_t  __riscv_pm4add_b(int8x4_t rs1, int8x4_t rs2);`        | Packed multiply-add (bytes)                     |
-| `__riscv_pm2adda_h`     | `int16x2_t __riscv_pm2adda_h(int16x2_t rs1, int16x2_t rs2);`     | Packed multiply-add accumulate (halfwords)      |
-| `__riscv_pm4adda_b`     | `int8_t __riscv_pm4adda_b(int8_t rs1, int8_t rs2);`        | RV32/64      |
-| `__riscv_pm2add_hx`     | `int16_t __riscv_pm2add_hx(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pm2adda_hx`    | `int16_t __riscv_pm2adda_hx(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pm2addu_h`     | `uint16_t __riscv_pm2addu_h(uint16_t rs1, uint16_t rs2);`  | RV32/64      |
-| `__riscv_pm4addu_b`     | `uint8_t __riscv_pm4addu_b(uint8_t rs1, uint8_t rs2);`     | RV32/64      |
-| `__riscv_pm2addau_h`    | `uint16_t __riscv_pm2addau_h(uint16_t rs1, uint16_t rs2);` | RV32/64      |
-| `__riscv_pm4addau_b`    | `uint8_t __riscv_pm4addau_b(uint8_t rs1, uint8_t rs2);`    | RV32/64      |
-| `__riscv_pmq2add_h`     | `int16_t __riscv_pmq2add_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pmqr2add_h`    | `int16_t __riscv_pmqr2add_h(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pmq2adda_h`    | `int16_t __riscv_pmq2adda_h(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pmqr2adda_h`   | `int16_t __riscv_pmqr2adda_h(int16_t rs1, int16_t rs2);`   | RV32/64      |
-| `__riscv_pm2sub_h`      | `int16_t __riscv_pm2sub_h(int16_t rs1, int16_t rs2);`      | RV32/64      |
-| `__riscv_pm2sadd_h`     | `int16_t __riscv_pm2sadd_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pm2suba_h`     | `int16_t __riscv_pm2suba_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pm2sub_hx`     | `int16_t __riscv_pm2sub_hx(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pm2sadd_hx`    | `int16_t __riscv_pm2sadd_hx(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pm2suba_hx`    | `int16_t __riscv_pm2suba_hx(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pm2addsu_h`    | `int16_t __riscv_pm2addsu_h(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pm4addsu_b`    | `int8_t __riscv_pm4addsu_b(int8_t rs1, int8_t rs2);`       | RV32/64      |
-| `__riscv_pm2addasu_h`   | `int16_t __riscv_pm2addasu_h(int16_t rs1, int16_t rs2);`   | RV32/64      |
-| `__riscv_pm4addasu_b`   | `int8_t __riscv_pm4addasu_b(int8_t rs1, int8_t rs2);`      | RV32/64      |
-| `__riscv_mqacc_h01`     | `int16_t __riscv_mqacc_h01(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_mqracc_h01`    | `int16_t __riscv_mqracc_h01(int16_t rs1, int16_t rs2);`    | RV32/64      |
+| Intrinsic             | Signature                                                                     | Description                                               |
+| --------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `__riscv_pm2add_h`      | `int16x2_t __riscv_pm2add_h(int16x2_t rs1, int16x2_t rs2);`               | Packed multiply-add (halfwords)                 |
+| `__riscv_pm4add_b`      | `int8x4_t  __riscv_pm4add_b(int8x4_t rs1, int8x4_t rs2);`                 | Packed multiply-add (bytes)                     |
+| `__riscv_pm2adda_h`     | `int16x2_t __riscv_pm2adda_h(int16x2_t rs1, int16x2_t rs2， int16x2_t rs3);`     | Packed multiply-add accumulate (halfwords)      |
+| `__riscv_pm4adda_b`     | `int8x4_t __riscv_pm4adda_b(int8x4_t rs1, int8x4_t rs2, int8x4_t);`        | Packed multiply-add accumulate (bytes)       |
+| `__riscv_pm2add_hx`   | `int16x2_t __riscv_pm2add_hx(int16x2_t rs1, int16x2_t rs2);`                  | Packed multiply-add (halfwords, cross form)               |
+| `__riscv_pm2adda_hx`  | `int16x2_t __riscv_pm2adda_hx(int16x2_t rs1, int16x2_t rs2, int16x2_t rs3);`  | Packed multiply-add accumulate (halfwords, cross)         |
+| `__riscv_pm2addu_h`   | `uint16x2_t __riscv_pm2addu_h(uint16x2_t rs1, uint16x2_t rs2);`               | Packed unsigned multiply-add (halfwords)                  |
+| `__riscv_pm4addu_b`   | `uint8x4_t __riscv_pm4addu_b(uint8x4_t rs1, uint8x4_t rs2);`                  | Packed unsigned multiply-add (bytes)                      |
+| `__riscv_pm2addau_h`  | `uint16x2_t __riscv_pm2addau_h(uint16x2_t rs1, uint16x2_t rs2);`              | Packed unsigned multiply-add accumulate (halfwords)       |
+| `__riscv_pm4addau_b`  | `uint8x4_t __riscv_pm4addau_b(uint8x4_t rs1, uint8x4_t rs2);`                 | Packed unsigned multiply-add accumulate (bytes)           |
+| `__riscv_pmq2add_h`   | `int16x2_t __riscv_pmq2add_h(int16x2_t rs1, int16x2_t rs2);`                  | Packed multiply-add (halfwords, quarter form)             |
+| `__riscv_pmqr2add_h`  | `int16x2_t __riscv_pmqr2add_h(int16x2_t rs1, int16x2_t rs2);`                 | Packed multiply-add (halfwords, quarter-round form)       |
+| `__riscv_pmq2adda_h`  | `int16x2_t __riscv_pmq2adda_h(int16x2_t rs1, int16x2_t rs2, int16x2_t rs3);`  | Packed multiply-add accumulate (halfwords, Q-format)       |
+| `__riscv_pmqr2adda_h` | `int16x2_t __riscv_pmqr2adda_h(int16x2_t rs1, int16x2_t rs2, int16x2_t rs3);` | Packed multiply-add accumulate (halfwords, Q-format with rounding) |
+| `__riscv_pm2sub_h`    | `int16x2_t __riscv_pm2sub_h(int16x2_t rs1, int16x2_t rs2);`                  | Packed subtract (halfwords)                        |
+| `__riscv_pm2sadd_h`   | `int16x2_t __riscv_pm2sadd_h(int16x2_t rs1, int16x2_t rs2);`                 | Packed signed add (halfwords)                      |
+| `__riscv_pm2suba_h`   | `int16x2_t __riscv_pm2suba_h(int16x2_t rs1, int16x2_t rs2, int16x2_t rs3);`    | Packed subtract accumulate (halfwords)             |
+| `__riscv_pm2sub_hx`   | `int16x2_t __riscv_pm2sub_hx(int16x2_t rs1, int16x2_t rs2);`                 | Packed subtract with exchange (halfwords)          |
+| `__riscv_pm2sadd_hx`  | `int16x2_t __riscv_pm2sadd_hx(int16x2_t rs1, int16x2_t rs2);`                | Packed signed add with exchange (halfwords)        |
+| `__riscv_pm2suba_hx`  | `int16x2_t __riscv_pm2suba_hx(int16x2_t rs1, int16x2_t rs2, int16x2_t rs3);`   | Packed subtract accumulate with exchange (halfwords)|
+| `__riscv_pm2addsu_h`  | `int16x2_t __riscv_pm2addsu_h(int16x2_t rs1, int16x2_t rs2);`                | Packed add signed + unsigned (halfwords)           |
+| `__riscv_pm4addsu_b`  | `int8x4_t __riscv_pm4addsu_b(int8x4_t rs1, int8x4_t rs2);`                   | Packed add signed + unsigned (bytes)               |
+| `__riscv_pm2addasu_h` | `int16x2_t __riscv_pm2addasu_h(int16x2_t rs1, int16x2_t rs2, int16x2_t rs3);`  | Packed add accumulate signed + unsigned (halfwords)|
+| `__riscv_pm4addasu_b` | `int8x4_t __riscv_pm4addasu_b(int8x4_t rs1, int8x4_t rs2, int8x4_t rs3);`      | Packed add accumulate signed + unsigned (bytes)    |
+| `__riscv_mqacc_h01`   | `int16x2_t __riscv_mqacc_h01(int16x2_t rs1, int16x2_t rs2);`                 | Multiply-accumulate Q-format (halfwords, lane 01)  |
+| `__riscv_mqracc_h01`  | `int16x2_t __riscv_mqracc_h01(int16x2_t rs1, int16x2_t rs2);`                | Multiply-accumulate Q-format with rounding (halfwords, lane 01) |
+
 
 #### RV64 Intrinsics
 
-| Intrinsic               | Signature                                                  | Availability |
-| ----------------------- | ---------------------------------------------------------- | ------------ |
-| `__riscv_pm2add_h`      | `int16_t __riscv_pm2add_h(int16_t rs1, int16_t rs2);`      | RV32/64      |
-| `__riscv_pm2add_w`      | `int32_t __riscv_pm2add_w(int32_t rs1, int32_t rs2);`      | RV64 only    |
-| `__riscv_pm4add_b`      | `int8_t __riscv_pm4add_b(int8_t rs1, int8_t rs2);`         | RV32/64      |
-| `__riscv_pm4add_h`      | `int16_t __riscv_pm4add_h(int16_t rs1, int16_t rs2);`      | RV64 only    |
-| `__riscv_pm2adda_h`     | `int16_t __riscv_pm2adda_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pm2adda_w`     | `int32_t __riscv_pm2adda_w(int32_t rs1, int32_t rs2);`     | RV64 only    |
-| `__riscv_pm4adda_b`     | `int8_t __riscv_pm4adda_b(int8_t rs1, int8_t rs2);`        | RV32/64      |
-| `__riscv_pm4adda_h`     | `int16_t __riscv_pm4adda_h(int16_t rs1, int16_t rs2);`     | RV64 only    |
-| `__riscv_pm2add_hx`     | `int16_t __riscv_pm2add_hx(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pm2add_wx`     | `int32_t __riscv_pm2add_wx(int32_t rs1, int32_t rs2);`     | RV64 only    |
-| `__riscv_pm2adda_hx`    | `int16_t __riscv_pm2adda_hx(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pm2adda_wx`    | `int32_t __riscv_pm2adda_wx(int32_t rs1, int32_t rs2);`    | RV64 only    |
-| `__riscv_pm2addu_h`     | `uint16_t __riscv_pm2addu_h(uint16_t rs1, uint16_t rs2);`  | RV32/64      |
-| `__riscv_pm2addu_w`     | `uint32_t __riscv_pm2addu_w(uint32_t rs1, uint32_t rs2);`  | RV64 only    |
-| `__riscv_pm4addu_b`     | `uint8_t __riscv_pm4addu_b(uint8_t rs1, uint8_t rs2);`     | RV32/64      |
-| `__riscv_pm4addu_h`     | `uint16_t __riscv_pm4addu_h(uint16_t rs1, uint16_t rs2);`  | RV64 only    |
-| `__riscv_pm2addau_h`    | `uint16_t __riscv_pm2addau_h(uint16_t rs1, uint16_t rs2);` | RV32/64      |
-| `__riscv_pm2addau_w`    | `uint32_t __riscv_pm2addau_w(uint32_t rs1, uint32_t rs2);` | RV64 only    |
-| `__riscv_pm4addau_b`    | `uint8_t __riscv_pm4addau_b(uint8_t rs1, uint8_t rs2);`    | RV32/64      |
-| `__riscv_pm4addau_h`    | `uint16_t __riscv_pm4addau_h(uint16_t rs1, uint16_t rs2);` | RV64 only    |
-| `__riscv_pmq2add_h`     | `int16_t __riscv_pmq2add_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pmq2add_w`     | `int32_t __riscv_pmq2add_w(int32_t rs1, int32_t rs2);`     | RV64 only    |
-| `__riscv_pmqr2add_h`    | `int16_t __riscv_pmqr2add_h(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pmqr2add_w`    | `int32_t __riscv_pmqr2add_w(int32_t rs1, int32_t rs2);`    | RV64 only    |
-| `__riscv_pmq2adda_h`    | `int16_t __riscv_pmq2adda_h(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pmq2adda_w`    | `int32_t __riscv_pmq2adda_w(int32_t rs1, int32_t rs2);`    | RV64 only    |
-| `__riscv_pmqr2adda_h`   | `int16_t __riscv_pmqr2adda_h(int16_t rs1, int16_t rs2);`   | RV32/64      |
-| `__riscv_pmqr2adda_w`   | `int32_t __riscv_pmqr2adda_w(int32_t rs1, int32_t rs2);`   | RV64 only    |
-| `__riscv_pm2sub_h`      | `int16_t __riscv_pm2sub_h(int16_t rs1, int16_t rs2);`      | RV32/64      |
-| `__riscv_pm2sub_w`      | `int32_t __riscv_pm2sub_w(int32_t rs1, int32_t rs2);`      | RV64 only    |
-| `__riscv_pm2sadd_h`     | `int16_t __riscv_pm2sadd_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pm2suba_h`     | `int16_t __riscv_pm2suba_h(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pm2suba_w`     | `int32_t __riscv_pm2suba_w(int32_t rs1, int32_t rs2);`     | RV64 only    |
-| `__riscv_pm2sub_hx`     | `int16_t __riscv_pm2sub_hx(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_pm2sub_wx`     | `int32_t __riscv_pm2sub_wx(int32_t rs1, int32_t rs2);`     | RV64 only    |
-| `__riscv_pm2sadd_hx`    | `int16_t __riscv_pm2sadd_hx(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pm2suba_hx`    | `int16_t __riscv_pm2suba_hx(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pm2suba_wx`    | `int32_t __riscv_pm2suba_wx(int32_t rs1, int32_t rs2);`    | RV64 only    |
-| `__riscv_pm2addsu_h`    | `int16_t __riscv_pm2addsu_h(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_pm2addsu_w`    | `int32_t __riscv_pm2addsu_w(int32_t rs1, int32_t rs2);`    | RV64 only    |
-| `__riscv_pm4addsu_b`    | `int8_t __riscv_pm4addsu_b(int8_t rs1, int8_t rs2);`       | RV32/64      |
-| `__riscv_pm4addsu_h`    | `int16_t __riscv_pm4addsu_h(int16_t rs1, int16_t rs2);`    | RV64 only    |
-| `__riscv_pm2addasu_h`   | `int16_t __riscv_pm2addasu_h(int16_t rs1, int16_t rs2);`   | RV32/64      |
-| `__riscv_pm2addasu_w`   | `int32_t __riscv_pm2addasu_w(int32_t rs1, int32_t rs2);`   | RV64 only    |
-| `__riscv_pm4addasu_b`   | `int8_t __riscv_pm4addasu_b(int8_t rs1, int8_t rs2);`      | RV32/64      |
-| `__riscv_pm4addasu_h`   | `int16_t __riscv_pm4addasu_h(int16_t rs1, int16_t rs2);`   | RV64 only    |
-| `__riscv_pmqacc_w_h01`  | `int32_t __riscv_pmqacc_w_h01(int32_t rs1, int32_t rs2);`  | RV64 only    |
-| `__riscv_pmqracc_w_h01` | `int32_t __riscv_pmqracc_w_h01(int32_t rs1, int32_t rs2);` | RV64 only    |
-| `__riscv_mqacc_h01`     | `int16_t __riscv_mqacc_h01(int16_t rs1, int16_t rs2);`     | RV32/64      |
-| `__riscv_mqacc_w01`     | `int32_t __riscv_mqacc_w01(int32_t rs1, int32_t rs2);`     | RV64 only    |
-| `__riscv_mqracc_h01`    | `int16_t __riscv_mqracc_h01(int16_t rs1, int16_t rs2);`    | RV32/64      |
-| `__riscv_mqracc_w01`    | `int32_t __riscv_mqracc_w01(int32_t rs1, int32_t rs2);`    | RV64 only    |
+| Intrinsic               | Signature                                                                 | Description                                       |
+| ----------------------- | ------------------------------------------------------------------------- | ------------------------------------------------- |
+| `__riscv_pm2add_h`      | `int16x4_t __riscv_pm2add_h(int16x4_t rs1, int16x4_t rs2);`               | Packed multiply-add (halfwords)                   |
+| `__riscv_pm2add_w`      | `int32x2_t __riscv_pm2add_w(int32x2_t rs1, int32x2_t rs2);`               | Packed multiply-add (words)                       |
+| `__riscv_pm4add_b`      | `int8x8_t  __riscv_pm4add_b(int8x8_t rs1, int8x8_t rs2);`                 | Packed multiply-add (bytes)                       |
+| `__riscv_pm4add_h`      | `int16x4_t __riscv_pm4add_h(int16x4_t rs1, int16x4_t rs2);`               | Packed multiply-add (halfwords, 4-lane)           |
+| `__riscv_pm2adda_h`     | `int16x4_t __riscv_pm2adda_h(int16x4_t rs1, int16x4_t rs2, int16x4_t rs3);`| Packed multiply-add accumulate (halfwords)        |
+| `__riscv_pm2adda_w`     | `int32x2_t __riscv_pm2adda_w(int32x2_t rs1, int32x2_t rs2, int32x2_t rs3);`| Packed multiply-add accumulate (words)            |
+| `__riscv_pm4adda_b`     | `int8x8_t  __riscv_pm4adda_b(int8x8_t rs1, int8x8_t rs2, int8x8_t rs3);`  | Packed multiply-add accumulate (bytes)            |
+| `__riscv_pm4adda_h`     | `int16x4_t __riscv_pm4adda_h(int16x4_t rs1, int16x4_t rs2, int16x4_t rs3);`| Packed multiply-add accumulate (halfwords, 4-lane)|
+| `__riscv_pm2add_hx`     | `int16x4_t __riscv_pm2add_hx(int16x4_t rs1, int16x4_t rs2);`              | Packed multiply-add with exchange (halfwords)     |
+| `__riscv_pm2add_wx`     | `int32x2_t __riscv_pm2add_wx(int32x2_t rs1, int32x2_t rs2);`              | Packed multiply-add with exchange (words)         |
+| `__riscv_pm2adda_hx`    | `int16x4_t __riscv_pm2adda_hx(int16x4_t rs1, int16x4_t rs2, int16x4_t rs3);`| Packed multiply-add accumulate with exchange (halfwords) |
+| `__riscv_pm2adda_wx`    | `int32x2_t __riscv_pm2adda_wx(int32x2_t rs1, int32x2_t rs2, int32x2_t rs3);`| Packed multiply-add accumulate with exchange (words) |
+| `__riscv_pm2addu_h`     | `uint16x4_t __riscv_pm2addu_h(uint16x4_t rs1, uint16x4_t rs2);`           | Packed unsigned multiply-add (halfwords)          |
+| `__riscv_pm2addu_w`     | `uint32x2_t __riscv_pm2addu_w(uint32x2_t rs1, uint32x2_t rs2);`           | Packed unsigned multiply-add (words)              |
+| `__riscv_pm4addu_b`     | `uint8x8_t  __riscv_pm4addu_b(uint8x8_t rs1, uint8x8_t rs2);`             | Packed unsigned multiply-add (bytes)              |
+| `__riscv_pm4addu_h`     | `uint16x4_t __riscv_pm4addu_h(uint16x4_t rs1, uint16x4_t rs2);`           | Packed unsigned multiply-add (halfwords, 4-lane)  |
+| `__riscv_pm2addau_h`    | `uint16x4_t __riscv_pm2addau_h(uint16x4_t rs1, uint16x4_t rs2, uint16x4_t rs3);` | Packed unsigned multiply-add accumulate (halfwords) |
+| `__riscv_pm2addau_w`    | `uint32x2_t __riscv_pm2addau_w(uint32x2_t rs1, uint32x2_t rs2, uint32x2_t rs3);` | Packed unsigned multiply-add accumulate (words)     |
+| `__riscv_pm4addau_b`    | `uint8x8_t  __riscv_pm4addau_b(uint8x8_t rs1, uint8x8_t rs2, uint8x8_t rs3);`   | Packed unsigned multiply-add accumulate (bytes)    |
+| `__riscv_pm4addau_h`    | `uint16x4_t __riscv_pm4addau_h(uint16x4_t rs1, uint16x4_t rs2, uint16x4_t rs3);`| Packed unsigned multiply-add accumulate (halfwords, 4-lane) |
+| `__riscv_pmq2add_h`     | `int16x4_t __riscv_pmq2add_h(int16x4_t rs1, int16x4_t rs2);`              | Packed quarter-sample multiply-add (halfwords)    |
+| `__riscv_pmq2add_w`     | `int32x2_t __riscv_pmq2add_w(int32x2_t rs1, int32x2_t rs2);`              | Packed quarter-sample multiply-add (words)        |
+| `__riscv_pmqr2add_h`    | `int16x4_t __riscv_pmqr2add_h(int16x4_t rs1, int16x4_t rs2);`             | Packed reciprocal quarter multiply-add (halfwords)|
+| `__riscv_pmqr2add_w`    | `int32x2_t __riscv_pmqr2add_w(int32x2_t rs1, int32x2_t rs2);`             | Packed reciprocal quarter multiply-add (words)    |
+| `__riscv_pmq2adda_h`    | `int16x4_t __riscv_pmq2adda_h(int16x4_t rs1, int16x4_t rs2, int16x4_t rs3);`| Packed quarter-sample multiply-add accumulate (halfwords) |
+| `__riscv_pmq2adda_w`    | `int32x2_t __riscv_pmq2adda_w(int32x2_t rs1, int32x2_t rs2, int32x2_t rs3);`| Packed quarter-sample multiply-add accumulate (words) |
+| `__riscv_pmqr2adda_h`   | `int16x4_t __riscv_pmqr2adda_h(int16x4_t rs1, int16x4_t rs2, int16x4_t rs3);`| Packed reciprocal quarter multiply-add accumulate (halfwords) |
+| `__riscv_pmqr2adda_w`   | `int32x2_t __riscv_pmqr2adda_w(int32x2_t rs1, int32x2_t rs2, int32x2_t rs3);`| Packed reciprocal quarter multiply-add accumulate (words) |
+| `__riscv_pm2sub_h`      | `int16x4_t __riscv_pm2sub_h(int16x4_t rs1, int16x4_t rs2);`               | Packed multiply-subtract (halfwords)              |
+| `__riscv_pm2sub_w`      | `int32x2_t __riscv_pm2sub_w(int32x2_t rs1, int32x2_t rs2);`               | Packed multiply-subtract (words)                  |
+| `__riscv_pm2sadd_h`     | `int16x4_t __riscv_pm2sadd_h(int16x4_t rs1, int16x4_t rs2);`              | Packed signed multiply-add (halfwords)            |
+| `__riscv_pm2suba_h`     | `int16x4_t __riscv_pm2suba_h(int16x4_t rs1, int16x4_t rs2, int16x4_t rs3);`| Packed multiply-subtract accumulate (halfwords)   |
+| `__riscv_pm2suba_w`     | `int32x2_t __riscv_pm2suba_w(int32x2_t rs1, int32x2_t rs2, int32x2_t rs3);`| Packed multiply-subtract accumulate (words)       |
+| `__riscv_pm2sub_hx`     | `int16x4_t __riscv_pm2sub_hx(int16x4_t rs1, int16x4_t rs2);`              | Packed multiply-subtract with exchange (halfwords)|
+| `__riscv_pm2sub_wx`     | `int32x2_t __riscv_pm2sub_wx(int32x2_t rs1, int32x2_t rs2);`              | Packed multiply-subtract with exchange (words)    |
+| `__riscv_pm2sadd_hx`    | `int16x4_t __riscv_pm2sadd_hx(int16x4_t rs1, int16x4_t rs2);`             | Packed signed multiply-add with exchange (halfwords) |
+| `__riscv_pm2suba_hx`    | `int16x4_t __riscv_pm2suba_hx(int16x4_t rs1, int16x4_t rs2, int16x4_t rs3);`| Packed multiply-subtract accumulate with exchange (halfwords) |
+| `__riscv_pm2suba_wx`    | `int32x2_t __riscv_pm2suba_wx(int32x2_t rs1, int32x2_t rs2, int32x2_t rs3);`| Packed multiply-subtract accumulate with exchange (words) |
+| `__riscv_pm2addsu_h`    | `int16x4_t __riscv_pm2addsu_h(int16x4_t rs1, int16x4_t rs2);`    | Packed multiply-add signed/unsigned (halfwords)            |
+| `__riscv_pm2addsu_w`    | `int32x2_t __riscv_pm2addsu_w(int32x2_t rs1, int32x2_t rs2);`    | Packed multiply-add signed/unsigned (words)                |
+| `__riscv_pm4addsu_b`    | `int8x8_t  __riscv_pm4addsu_b(int8x8_t rs1, int8x8_t rs2);`      | Packed multiply-add signed/unsigned (bytes)                |
+| `__riscv_pm4addsu_h`    | `int16x4_t __riscv_pm4addsu_h(int16x4_t rs1, int16x4_t rs2);`    | Packed multiply-add signed/unsigned (halfwords)            |
+| `__riscv_pm2addasu_h`   | `int16x4_t __riscv_pm2addasu_h(int16x4_t rs1, int16x4_t rs2);`   | Packed multiply-add accumulate signed/unsigned (halfwords) |
+| `__riscv_pm2addasu_w`   | `int32x2_t __riscv_pm2addasu_w(int32x2_t rs1, int32x2_t rs2);`   | Packed multiply-add accumulate signed/unsigned (words)     |
+| `__riscv_pm4addasu_b`   | `int8x8_t  __riscv_pm4addasu_b(int8x8_t rs1, int8x8_t rs2);`     | Packed multiply-add accumulate signed/unsigned (bytes)     |
+| `__riscv_pm4addasu_h`   | `int16x4_t __riscv_pm4addasu_h(int16x4_t rs1, int16x4_t rs2);`   | Packed multiply-add accumulate signed/unsigned (halfwords) |
+| `__riscv_pmqacc_w_h01`  | `int32x2_t __riscv_pmqacc_w_h01(int32x2_t rs1, int32x2_t rs2);`  | Multiply-accumulate (words)                                |
+| `__riscv_pmqracc_w_h01` | `int32x2_t __riscv_pmqracc_w_h01(int32x2_t rs1, int32x2_t rs2);` | Multiply-accumulate (words, reversed)                      |
+| `__riscv_mqacc_h01`     | `int16x4_t __riscv_mqacc_h01(int16x4_t rs1, int16x4_t rs2);`     | Multiply-accumulate (halfwords)                            |
+| `__riscv_mqacc_w01`     | `int32x2_t __riscv_mqacc_w01(int32x2_t rs1, int32x2_t rs2);`     | Multiply-accumulate (words)                                |
+| `__riscv_mqracc_h01`    | `int16x4_t __riscv_mqracc_h01(int16x4_t rs1, int16x4_t rs2);`    | Multiply-accumulate (halfwords, reversed)                  |
+| `__riscv_mqracc_w01`    | `int32x2_t __riscv_mqracc_w01(int32x2_t rs1, int32x2_t rs2);`    | Multiply-accumulate (words, reversed)                      |
 
 ### Cross-Lane Packed Add/Sub Intrinsics
 
@@ -792,20 +793,33 @@ These intrinsics handle cross-lane arithmetic on packed data:
 
 Suffix .hx operates on 16-bit lanes; .wx on 32-bit lanes.
 
-| Intrinsic         | Signature                                            | Availability |
-| ----------------- | ---------------------------------------------------- | ------------ |
-| `__riscv_pas_hx`  | `int16_t __riscv_pas_hx(int16_t rs1, int16_t rs2);`  | RV32/64      |
-| `__riscv_pas_wx`  | `int32_t __riscv_pas_wx(int32_t rs1, int32_t rs2);`  | RV64 only    |
-| `__riscv_psa_hx`  | `int16_t __riscv_psa_hx(int16_t rs1, int16_t rs2);`  | RV32/64      |
-| `__riscv_psa_wx`  | `int32_t __riscv_psa_wx(int32_t rs1, int32_t rs2);`  | RV64 only    |
-| `__riscv_psas_hx` | `int16_t __riscv_psas_hx(int16_t rs1, int16_t rs2);` | RV32/64      |
-| `__riscv_psas_wx` | `int32_t __riscv_psas_wx(int32_t rs1, int32_t rs2);` | RV64 only    |
-| `__riscv_pssa_hx` | `int16_t __riscv_pssa_hx(int16_t rs1, int16_t rs2);` | RV32/64      |
-| `__riscv_pssa_wx` | `int32_t __riscv_pssa_wx(int32_t rs1, int32_t rs2);` | RV64 only    |
-| `__riscv_paas_hx` | `int16_t __riscv_paas_hx(int16_t rs1, int16_t rs2);` | RV32/64      |
-| `__riscv_paas_wx` | `int32_t __riscv_paas_wx(int32_t rs1, int32_t rs2);` | RV64 only    |
-| `__riscv_pasa_hx` | `int16_t __riscv_pasa_hx(int16_t rs1, int16_t rs2);` | RV32/64      |
-| `__riscv_pasa_wx` | `int32_t __riscv_pasa_wx(int32_t rs1, int32_t rs2);` | RV64 only    |
+#### RV32 Intrinsics
+
+| Intrinsic         | Signature                                                  | Description                            |
+| ----------------- | ---------------------------------------------------------- | -------------------------------------- |
+| `__riscv_pas_hx`  | `int16x2_t __riscv_pas_hx(int16x2_t rs1, int16x2_t rs2);`  | Packed add/subtract (halfwords)        |
+| `__riscv_psa_hx`  | `int16x2_t __riscv_psa_hx(int16x2_t rs1, int16x2_t rs2);`  | Packed subtract/add (halfwords)        |
+| `__riscv_psas_hx` | `int16x2_t __riscv_psas_hx(int16x2_t rs1, int16x2_t rs2);` | Packed subtract/add signed (halfwords) |
+| `__riscv_pssa_hx` | `int16x2_t __riscv_pssa_hx(int16x2_t rs1, int16x2_t rs2);` | Packed add/subtract signed (halfwords) |
+| `__riscv_paas_hx` | `int16x2_t __riscv_paas_hx(int16x2_t rs1, int16x2_t rs2);` | Packed add/add signed (halfwords)      |
+| `__riscv_pasa_hx` | `int16x2_t __riscv_pasa_hx(int16x2_t rs1, int16x2_t rs2);` | Packed add/subtract signed (halfwords) |
+
+#### RV64 Intrinsics
+
+| Intrinsic         | Signature                                                  | Description                            |
+| ----------------- | ---------------------------------------------------------- | -------------------------------------- |
+| `__riscv_pas_hx`  | `int16x4_t __riscv_pas_hx(int16x4_t rs1, int16x4_t rs2);`  | Packed add/subtract (halfwords)        |
+| `__riscv_pas_wx`  | `int32x2_t __riscv_pas_wx(int32x2_t rs1, int32x2_t rs2);`  | Packed add/subtract (words)            |
+| `__riscv_psa_hx`  | `int16x4_t __riscv_psa_hx(int16x4_t rs1, int16x4_t rs2);`  | Packed subtract/add (halfwords)        |
+| `__riscv_psa_wx`  | `int32x2_t __riscv_psa_wx(int32x2_t rs1, int32x2_t rs2);`  | Packed subtract/add (words)            |
+| `__riscv_psas_hx` | `int16x4_t __riscv_psas_hx(int16x4_t rs1, int16x4_t rs2);` | Packed subtract/add signed (halfwords) |
+| `__riscv_psas_wx` | `int32x2_t __riscv_psas_wx(int32x2_t rs1, int32x2_t rs2);` | Packed subtract/add signed (words)     |
+| `__riscv_pssa_hx` | `int16x4_t __riscv_pssa_hx(int16x4_t rs1, int16x4_t rs2);` | Packed add/subtract signed (halfwords) |
+| `__riscv_pssa_wx` | `int32x2_t __riscv_pssa_wx(int32x2_t rs1, int32x2_t rs2);` | Packed add/subtract signed (words)     |
+| `__riscv_paas_hx` | `int16x4_t __riscv_paas_hx(int16x4_t rs1, int16x4_t rs2);` | Packed add/add signed (halfwords)      |
+| `__riscv_paas_wx` | `int32x2_t __riscv_paas_wx(int32x2_t rs1, int32x2_t rs2);` | Packed add/add signed (words)          |
+| `__riscv_pasa_hx` | `int16x4_t __riscv_pasa_hx(int16x4_t rs1, int16x4_t rs2);` | Packed add/subtract signed (halfwords) |
+| `__riscv_pasa_wx` | `int32x2_t __riscv_pasa_wx(int32x2_t rs1, int32x2_t rs2);` | Packed add/subtract signed (words)     |
 
 ### Packed Comparison and Min/Max Intrinsics
 
@@ -817,32 +831,54 @@ Signed and unsigned less-than comparison (mslt, pmslt.*, msltu, pmsltu.*)
 
 Element-wise minimum and maximum (pmin.*, pminu.*, pmax.*, pmaxu.*)
 
-| Intrinsic          | Signature                                                | Availability | Description                        |
-| ------------------ | -------------------------------------------------------- | ------------ | ---------------------------------- |
-| `__riscv_mseq`     | `int32_t __riscv_mseq(int32_t rs1, int32_t rs2);`        | RV32 only    | Normal equality comparison         |
-| `__riscv_pmseq_b`  | `int8_t __riscv_pmseq_b(int8_t rs1, int8_t rs2);`        | RV32/64      | Packed equality compare (8-bit)    |
-| `__riscv_pmseq_h`  | `int16_t __riscv_pmseq_h(int16_t rs1, int16_t rs2);`     | RV32/64      | Packed equality compare (16-bit)   |
-| `__riscv_pmseq_w`  | `int32_t __riscv_pmseq_w(int32_t rs1, int32_t rs2);`     | RV64 only    | Packed equality compare (32-bit)   |
-| `__riscv_mslt`     | `int32_t __riscv_mslt(int32_t rs1, int32_t rs2);`        | RV32 only    | Normal signed less-than compare    |
-| `__riscv_pmslt_b`  | `int8_t __riscv_pmslt_b(int8_t rs1, int8_t rs2);`        | RV32/64      | Packed signed less-than (8-bit)    |
-| `__riscv_pmslt_h`  | `int16_t __riscv_pmslt_h(int16_t rs1, int16_t rs2);`     | RV32/64      | Packed signed less-than (16-bit)   |
-| `__riscv_pmslt_w`  | `int32_t __riscv_pmslt_w(int32_t rs1, int32_t rs2);`     | RV64 only    | Packed signed less-than (32-bit)   |
-| `__riscv_msltu`    | `uint32_t __riscv_msltu(uint32_t rs1, uint32_t rs2);`    | RV32 only    | Normal unsigned less-than compare  |
-| `__riscv_pmsltu_b` | `uint8_t __riscv_pmsltu_b(uint8_t rs1, uint8_t rs2);`    | RV32/64      | Packed unsigned less-than (8-bit)  |
-| `__riscv_pmsltu_h` | `uint16_t __riscv_pmsltu_h(uint16_t rs1, uint16_t rs2);` | RV32/64      | Packed unsigned less-than (16-bit) |
-| `__riscv_pmsltu_w` | `uint32_t __riscv_pmsltu_w(uint32_t rs1, uint32_t rs2);` | RV64 only    | Packed unsigned less-than (32-bit) |
-| `__riscv_pmin_b`   | `int8_t __riscv_pmin_b(int8_t rs1, int8_t rs2);`         | RV32/64      | Packed signed minimum (8-bit)      |
-| `__riscv_pmin_h`   | `int16_t __riscv_pmin_h(int16_t rs1, int16_t rs2);`      | RV32/64      | Packed signed minimum (16-bit)     |
-| `__riscv_pmin_w`   | `int32_t __riscv_pmin_w(int32_t rs1, int32_t rs2);`      | RV64 only    | Packed signed minimum (32-bit)     |
-| `__riscv_pminu_b`  | `uint8_t __riscv_pminu_b(uint8_t rs1, uint8_t rs2);`     | RV32/64      | Packed unsigned minimum (8-bit)    |
-| `__riscv_pminu_h`  | `uint16_t __riscv_pminu_h(uint16_t rs1, uint16_t rs2);`  | RV32/64      | Packed unsigned minimum (16-bit)   |
-| `__riscv_pminu_w`  | `uint32_t __riscv_pminu_w(uint32_t rs1, uint32_t rs2);`  | RV64 only    | Packed unsigned minimum (32-bit)   |
-| `__riscv_pmax_b`   | `int8_t __riscv_pmax_b(int8_t rs1, int8_t rs2);`         | RV32/64      | Packed signed maximum (8-bit)      |
-| `__riscv_pmax_h`   | `int16_t __riscv_pmax_h(int16_t rs1, int16_t rs2);`      | RV32/64      | Packed signed maximum (16-bit)     |
-| `__riscv_pmax_w`   | `int32_t __riscv_pmax_w(int32_t rs1, int32_t rs2);`      | RV64 only    | Packed signed maximum (32-bit)     |
-| `__riscv_pmaxu_b`  | `uint8_t __riscv_pmaxu_b(uint8_t rs1, uint8_t rs2);`     | RV32/64      | Packed unsigned maximum (8-bit)    |
-| `__riscv_pmaxu_h`  | `uint16_t __riscv_pmaxu_h(uint16_t rs1, uint16_t rs2);`  | RV32/64      | Packed unsigned maximum (16-bit)   |
-| `__riscv_pmaxu_w`  | `uint32_t __riscv_pmaxu_w(uint32_t rs1, uint32_t rs2);`  | RV64 only    | Packed unsigned maximum (32-bit)   |
+#### RV32 Intrinsics
+
+| Intrinsic          | Signature                                                      | Description                        |
+| ------------------ | -------------------------------------------------------------- | ---------------------------------- |
+| `__riscv_mseq`     | `int32_t __riscv_mseq(int32_t rs1, int32_t rs2);`              | Normal equality comparison         |
+| `__riscv_pmseq_b`  | `int8x4_t __riscv_pmseq_b(int8x4_t rs1, int8x4_t rs2);`        | Packed equality compare (8-bit)    |
+| `__riscv_pmseq_h`  | `int16x2_t __riscv_pmseq_h(int16x2_t rs1, int16x2_t rs2);`     | Packed equality compare (16-bit)   |
+| `__riscv_mslt`     | `int32_t __riscv_mslt(int32_t rs1, int32_t rs2);`              | Normal signed less-than compare    |
+| `__riscv_pmslt_b`  | `int8x4_t __riscv_pmslt_b(int8x4_t rs1, int8x4_t rs2);`        | Packed signed less-than (8-bit)    |
+| `__riscv_pmslt_h`  | `int16x2_t __riscv_pmslt_h(int16x2_t rs1, int16x2_t rs2);`     | Packed signed less-than (16-bit)   |
+| `__riscv_msltu`    | `uint32_t __riscv_msltu(uint32_t rs1, uint32_t rs2);`          | Normal unsigned less-than compare  |
+| `__riscv_pmsltu_b` | `uint8x4_t __riscv_pmsltu_b(uint8x4_t rs1, uint8x4_t rs2);`    | Packed unsigned less-than (8-bit)  |
+| `__riscv_pmsltu_h` | `uint16x2_t __riscv_pmsltu_h(uint16x2_t rs1, uint16x2_t rs2);` | Packed unsigned less-than (16-bit) |
+| `__riscv_pmin_b`   | `int8x4_t __riscv_pmin_b(int8x4_t rs1, int8x4_t rs2);`         | Packed signed minimum (8-bit)      |
+| `__riscv_pmin_h`   | `int16x2_t __riscv_pmin_h(int16x2_t rs1, int16x2_t rs2);`      | Packed signed minimum (16-bit)     |
+| `__riscv_pminu_b`  | `uint8x4_t __riscv_pminu_b(uint8x4_t rs1, uint8x4_t rs2);`     | Packed unsigned minimum (8-bit)    |
+| `__riscv_pminu_h`  | `uint16x2_t __riscv_pminu_h(uint16x2_t rs1, uint16x2_t rs2);`  | Packed unsigned minimum (16-bit)   |
+| `__riscv_pmax_b`   | `int8x4_t __riscv_pmax_b(int8x4_t rs1, int8x4_t rs2);`         | Packed signed maximum (8-bit)      |
+| `__riscv_pmax_h`   | `int16x2_t __riscv_pmax_h(int16x2_t rs1, int16x2_t rs2);`      | Packed signed maximum (16-bit)     |
+| `__riscv_pmaxu_b`  | `uint8x4_t __riscv_pmaxu_b(uint8x4_t rs1, uint8x4_t rs2);`     | Packed unsigned maximum (8-bit)    |
+| `__riscv_pmaxu_h`  | `uint16x2_t __riscv_pmaxu_h(uint16x2_t rs1, uint16x2_t rs2);`  | Packed unsigned maximum (16-bit)   |
+
+#### RV64 Intrinsics
+
+| Intrinsic          | Signature                                                      | Description                        |
+| ------------------ | -------------------------------------------------------------- | ---------------------------------- |
+| `__riscv_pmseq_b`  | `int8x8_t __riscv_pmseq_b(int8x8_t rs1, int8x8_t rs2);`        | Packed equality compare (8-bit)    |
+| `__riscv_pmseq_h`  | `int16x4_t __riscv_pmseq_h(int16x4_t rs1, int16x4_t rs2);`     | Packed equality compare (16-bit)   |
+| `__riscv_pmseq_w`  | `int32x2_t __riscv_pmseq_w(int32x2_t rs1, int32x2_t rs2);`     | Packed equality compare (32-bit)   |
+| `__riscv_pmslt_b`  | `int8x8_t __riscv_pmslt_b(int8x8_t rs1, int8x8_t rs2);`        | Packed signed less-than (8-bit)    |
+| `__riscv_pmslt_h`  | `int16x4_t __riscv_pmslt_h(int16x4_t rs1, int16x4_t rs2);`     | Packed signed less-than (16-bit)   |
+| `__riscv_pmslt_w`  | `int32x2_t __riscv_pmslt_w(int32x2_t rs1, int32x2_t rs2);`     | Packed signed less-than (32-bit)   |
+| `__riscv_pmsltu_b` | `uint8x8_t __riscv_pmsltu_b(uint8x8_t rs1, uint8x8_t rs2);`    | Packed unsigned less-than (8-bit)  |
+| `__riscv_pmsltu_h` | `uint16x4_t __riscv_pmsltu_h(uint16x4_t rs1, uint16x4_t rs2);` | Packed unsigned less-than (16-bit) |
+| `__riscv_pmsltu_w` | `uint32x2_t __riscv_pmsltu_w(uint32x2_t rs1, uint32x2_t rs2);` | Packed unsigned less-than (32-bit) |
+| `__riscv_pmin_b`   | `int8x8_t __riscv_pmin_b(int8x8_t rs1, int8x8_t rs2);`         | Packed signed minimum (8-bit)      |
+| `__riscv_pmin_h`   | `int16x4_t __riscv_pmin_h(int16x4_t rs1, int16x4_t rs2);`      | Packed signed minimum (16-bit)     |
+| `__riscv_pmin_w`   | `int32x2_t __riscv_pmin_w(int32x2_t rs1, int32x2_t rs2);`      | Packed signed minimum (32-bit)     |
+| `__riscv_pminu_b`  | `uint8x8_t __riscv_pminu_b(uint8x8_t rs1, uint8x8_t rs2);`     | Packed unsigned minimum (8-bit)    |
+| `__riscv_pminu_h`  | `uint16x4_t __riscv_pminu_h(uint16x4_t rs1, uint16x4_t rs2);`  | Packed unsigned minimum (16-bit)   |
+| `__riscv_pminu_w`  | `uint32x2_t __riscv_pminu_w(uint32x2_t rs1, uint32x2_t rs2);`  | Packed unsigned minimum (32-bit)   |
+| `__riscv_pmax_b`   | `int8x8_t __riscv_pmax_b(int8x8_t rs1, int8x8_t rs2);`         | Packed signed maximum (8-bit)      |
+| `__riscv_pmax_h`   | `int16x4_t __riscv_pmax_h(int16x4_t rs1, int16x4_t rs2);`      | Packed signed maximum (16-bit)     |
+| `__riscv_pmax_w`   | `int32x2_t __riscv_pmax_w(int32x2_t rs1, int32x2_t rs2);`      | Packed signed maximum (32-bit)     |
+| `__riscv_pmaxu_b`  | `uint8x8_t __riscv_pmaxu_b(uint8x8_t rs1, uint8x8_t rs2);`     | Packed unsigned maximum (8-bit)    |
+| `__riscv_pmaxu_h`  | `uint16x4_t __riscv_pmaxu_h(uint16x4_t rs1, uint16x4_t rs2);`  | Packed unsigned maximum (16-bit)   |
+| `__riscv_pmaxu_w`  | `uint32x2_t __riscv_pmaxu_w(uint32x2_t rs1, uint32x2_t rs2);`  | Packed unsigned maximum (32-bit)   |
+
 
 ### Packed High-half Multiply and Accumulate Intrinsics
 
@@ -858,35 +894,44 @@ Lane suffixes (.b0, .b1, .h0, .h1) select which elements are multiplied within p
 
 Normal mulh*, mulhr*, and mulhrsu handle word-level operations on RV32.
 
-| Intrinsic              | Signature                                                  | Availability |
-| ---------------------- | ---------------------------------------------------------- | ------------ |
-| `__riscv_pmulh_h`      | `int16_t __riscv_pmulh_h(int16_t rs1, int16_t rs2);`       | RV32/64      |
-| `__riscv_pmulh_w`      | `int32_t __riscv_pmulh_w(int32_t rs1, int32_t rs2);`       | RV64 only    |
-| `__riscv_pmulh_h_b0`   | `int16_t __riscv_pmulh_h_b0(int8_t rs1, int8_t rs2);`      | RV32/64      |
-| `__riscv_pmulh_w_h0`   | `int32_t __riscv_pmulh_w_h0(int16_t rs1, int16_t rs2);`    | RV64 only    |
-| `__riscv_pmulh_h_b1`   | `int16_t __riscv_pmulh_h_b1(int8_t rs1, int8_t rs2);`      | RV32/64      |
-| `__riscv_pmulh_w_h1`   | `int32_t __riscv_pmulh_w_h1(int16_t rs1, int16_t rs2);`    | RV64 only    |
-| `__riscv_pmulhu_h`     | `uint16_t __riscv_pmulhu_h(uint16_t rs1, uint16_t rs2);`   | RV32/64      |
-| `__riscv_pmulhu_w`     | `uint32_t __riscv_pmulhu_w(uint32_t rs1, uint32_t rs2);`   | RV64 only    |
-| `__riscv_pmulhr_h`     | `int16_t __riscv_pmulhr_h(int16_t rs1, int16_t rs2);`      | RV32/64      |
-| `__riscv_pmulhr_w`     | `int32_t __riscv_pmulhr_w(int32_t rs1, int32_t rs2);`      | RV64 only    |
-| `__riscv_pmulhru_h`    | `uint16_t __riscv_pmulhru_h(uint16_t rs1, uint16_t rs2);`  | RV32/64      |
-| `__riscv_pmulhru_w`    | `uint32_t __riscv_pmulhru_w(uint32_t rs1, uint32_t rs2);`  | RV64 only    |
-| `__riscv_pmulhsu_h`    | `int16_t __riscv_pmulhsu_h(int8_t rs1, uint8_t rs2);`      | RV32/64      |
-| `__riscv_pmulhsu_w`    | `int32_t __riscv_pmulhsu_w(int16_t rs1, uint16_t rs2);`    | RV64 only    |
-| `__riscv_pmulhsu_h_b0` | `int16_t __riscv_pmulhsu_h_b0(int8_t rs1, uint8_t rs2);`   | RV32/64      |
-| `__riscv_pmulhsu_w_h0` | `int32_t __riscv_pmulhsu_w_h0(int16_t rs1, uint16_t rs2);` | RV64 only    |
-| `__riscv_pmulhsu_h_b1` | `int16_t __riscv_pmulhsu_h_b1(int8_t rs1, uint8_t rs2);`   | RV32/64      |
-| `__riscv_pmulhsu_w_h1` | `int32_t __riscv_pmulhsu_w_h1(int16_t rs1, uint16_t rs2);` | RV64 only    |
-| `__riscv_pmulhrsu_h`   | `uint16_t __riscv_pmulhrsu_h(uint16_t rs1, int16_t rs2);`  | RV32/64      |
-| `__riscv_pmulhrsu_w`   | `uint32_t __riscv_pmulhrsu_w(uint32_t rs1, int32_t rs2);`  | RV64 only    |
-| `__riscv_mulh_h1`      | `int16_t __riscv_mulh_h1(int16_t rs1, int16_t rs2);`       | RV32 only    |
-| `__riscv_mulhr`        | `int32_t __riscv_mulhr(int32_t rs1, int32_t rs2);`         | RV32 only    |
-| `__riscv_mulhru`       | `uint32_t __riscv_mulhru(uint32_t rs1, uint32_t rs2);`     | RV32 only    |
-| `__riscv_mulh_h0`      | `int16_t __riscv_mulh_h0(int16_t rs1, int16_t rs2);`       | RV32 only    |
-| `__riscv_mulhsu_h0`    | `int16_t __riscv_mulhsu_h0(int16_t rs1, uint16_t rs2);`    | RV32 only    |
-| `__riscv_mulhsu_h1`    | `int16_t __riscv_mulhsu_h1(int16_t rs1, uint16_t rs2);`    | RV32 only    |
-| `__riscv_mulhrsu`      | `uint32_t __riscv_mulhrsu(uint32_t rs1, int32_t rs2);`     | RV32 only    |
+| Intrinsic | Signature | Availability | | ---------------------- | ---------------------------------------------------------- | ------------ | | __riscv_pmulh_h | int16_t __riscv_pmulh_h(int16_t rs1, int16_t rs2); | RV32/64 | | __riscv_pmulh_w | int32_t __riscv_pmulh_w(int32_t rs1, int32_t rs2); | RV64 only | | __riscv_pmulh_h_b0 | int16_t __riscv_pmulh_h_b0(int8_t rs1, int8_t rs2); | RV32/64 | | __riscv_pmulh_w_h0 | int32_t __riscv_pmulh_w_h0(int16_t rs1, int16_t rs2); | RV64 only | | __riscv_pmulh_h_b1 | int16_t __riscv_pmulh_h_b1(int8_t rs1, int8_t rs2); | RV32/64 | | __riscv_pmulh_w_h1 | int32_t __riscv_pmulh_w_h1(int16_t rs1, int16_t rs2); | RV64 only | | __riscv_pmulhu_h | uint16_t __riscv_pmulhu_h(uint16_t rs1, uint16_t rs2); | RV32/64 | | __riscv_pmulhu_w | uint32_t __riscv_pmulhu_w(uint32_t rs1, uint32_t rs2); | RV64 only | | __riscv_pmulhr_h | int16_t __riscv_pmulhr_h(int16_t rs1, int16_t rs2); | RV32/64 | | __riscv_pmulhr_w | int32_t __riscv_pmulhr_w(int32_t rs1, int32_t rs2); | RV64 only | | __riscv_pmulhru_h | uint16_t __riscv_pmulhru_h(uint16_t rs1, uint16_t rs2); | RV32/64 | | __riscv_pmulhru_w | uint32_t __riscv_pmulhru_w(uint32_t rs1, uint32_t rs2); | RV64 only | | __riscv_pmulhsu_h | int16_t __riscv_pmulhsu_h(int8_t rs1, uint8_t rs2); | RV32/64 | | __riscv_pmulhsu_w | int32_t __riscv_pmulhsu_w(int16_t rs1, uint16_t rs2); | RV64 only | | __riscv_pmulhsu_h_b0 | int16_t __riscv_pmulhsu_h_b0(int8_t rs1, uint8_t rs2); | RV32/64 | | __riscv_pmulhsu_w_h0 | int32_t __riscv_pmulhsu_w_h0(int16_t rs1, uint16_t rs2); | RV64 only | | __riscv_pmulhsu_h_b1 | int16_t __riscv_pmulhsu_h_b1(int8_t rs1, uint8_t rs2); | RV32/64 | | __riscv_pmulhsu_w_h1 | int32_t __riscv_pmulhsu_w_h1(int16_t rs1, uint16_t rs2); | RV64 only | | __riscv_pmulhrsu_h | uint16_t __riscv_pmulhrsu_h(uint16_t rs1, int16_t rs2); | RV32/64 | | __riscv_pmulhrsu_w | uint32_t __riscv_pmulhrsu_w(uint32_t rs1, int32_t rs2); | RV64 only | | __riscv_mulh_h1 | int16_t __riscv_mulh_h1(int16_t rs1, int16_t rs2); | RV32 only | | __riscv_mulhr | int32_t __riscv_mulhr(int32_t rs1, int32_t rs2); | RV32 only | | __riscv_mulhru | uint32_t __riscv_mulhru(uint32_t rs1, uint32_t rs2); | RV32 only | | __riscv_mulh_h0 | int16_t __riscv_mulh_h0(int16_t rs1, int16_t rs2); | RV32 only | | __riscv_mulhsu_h0 | int16_t __riscv_mulhsu_h0(int16_t rs1, uint16_t rs2); | RV32 only | | __riscv_mulhsu_h1 | int16_t __riscv_mulhsu_h1(int16_t rs1, uint16_t rs2); | RV32 only | | __riscv_mulhrsu | uint32_t __riscv_mulhrsu(uint32_t rs1, int32_t rs2); | RV32 only |
+
+#### RV32 Intrinsics
+
+| Intrinsic              | Signature                                                       | Description                                      |
+| ---------------------- | --------------------------------------------------------------- | ------------------------------------------------ |
+| `__riscv_pmulh_h`      | `int16x2_t __riscv_pmulh_h(int16x2_t rs1, int16x2_t rs2);`      | Signed high-half multiplication (16-bit)         |
+| `__riscv_pmulh_h_b0`   | `int16x2_t __riscv_pmulh_h_b0(int8x4_t rs1, int8x4_t rs2);`     | Signed high-half multiplication of byte 0        |
+| `__riscv_pmulh_h_b1`   | `int16x2_t __riscv_pmulh_h_b1(int8x4_t rs1, int8x4_t rs2);`     | Signed high-half multiplication of byte 1        |
+| `__riscv_pmulhu_h`     | `uint16x2_t __riscv_pmulhu_h(uint16x2_t rs1, uint16x2_t rs2);`  | Unsigned high-half multiplication (16-bit)       |
+| `__riscv_pmulhr_h`     | `int16x2_t __riscv_pmulhr_h(int16x2_t rs1, int16x2_t rs2);`     | Rounded signed high-half multiplication (16-bit) |
+| `__riscv_pmulhru_h`    | `uint16x2_t __riscv_pmulhru_h(uint16x2_t rs1, int16x2_t rs2);`  | Rounded signed/unsigned multiplication (16-bit)  |
+| `__riscv_pmulhsu_h`    | `int16x2_t __riscv_pmulhsu_h(int8x4_t rs1, uint8x4_t rs2);`     | Signed/unsigned high-half multiplication         |
+| `__riscv_pmulhsu_h_b0` | `int16x2_t __riscv_pmulhsu_h_b0(int8x4_t rs1, uint8x4_t rs2);`  | Signed/unsigned multiplication byte 0            |
+| `__riscv_pmulhsu_h_b1` | `int16x2_t __riscv_pmulhsu_h_b1(int8x4_t rs1, uint8x4_t rs2);`  | Signed/unsigned multiplication byte 1            |
+| `__riscv_pmulhrsu_h`   | `uint16x2_t __riscv_pmulhrsu_h(uint16x2_t rs1, int16x2_t rs2);` | Rounded signed/unsigned multiplication (16-bit)  |
+| `__riscv_mulh_h1`      | `int16x2_t __riscv_mulh_h1(int16x2_t rs1, int16x2_t rs2);`      | Signed high-half multiplication of second half   |
+| `__riscv_mulhr`        | `int16x2_t __riscv_mulhr(int16x2_t rs1, int16x2_t rs2);`        | Rounded signed multiplication                    |
+| `__riscv_mulhru`       | `uint16x2_t __riscv_mulhru(uint16x2_t rs1, uint16x2_t rs2);`    | Rounded signed/unsigned multiplication           |
+| `__riscv_mulh_h0`      | `int16x2_t __riscv_mulh_h0(int16x2_t rs1, int16x2_t rs2);`      | Signed high-half multiplication of first half    |
+| `__riscv_mulhsu_h0`    | `int16x2_t __riscv_mulhsu_h0(int16x2_t rs1, uint16x2_t rs2);`   | Signed/unsigned multiplication first half        |
+| `__riscv_mulhsu_h1`    | `int16x2_t __riscv_mulhsu_h1(int16x2_t rs1, uint16x2_t rs2);`   | Signed/unsigned multiplication second half       |
+| `__riscv_mulhrsu`      | `uint16x2_t __riscv_mulhrsu(uint16x2_t rs1, int16x2_t rs2);`    | Rounded signed/unsigned multiplication           |
+
+#### RV64 Intrinsics
+
+| Intrinsic              | Signature                                                        | Description                                      |
+| ---------------------- | ---------------------------------------------------------------- | ------------------------------------------------ |
+| `__riscv_pmulh_w`      | `int32x2_t __riscv_pmulh_w(int32x2_t rs1, int32x2_t rs2);`       | Signed high-half multiplication (32-bit)         |
+| `__riscv_pmulh_w_h0`   | `int32x2_t __riscv_pmulh_w_h0(int16x4_t rs1, int16x4_t rs2);`    | Signed high-half multiplication halfword 0       |
+| `__riscv_pmulh_w_h1`   | `int32x2_t __riscv_pmulh_w_h1(int16x4_t rs1, int16x4_t rs2);`    | Signed high-half multiplication halfword 1       |
+| `__riscv_pmulhu_w`     | `uint32x2_t __riscv_pmulhu_w(uint32x2_t rs1, uint32x2_t rs2);`   | Unsigned high-half multiplication (32-bit)       |
+| `__riscv_pmulhr_w`     | `int32x2_t __riscv_pmulhr_w(int32x2_t rs1, int32x2_t rs2);`      | Rounded signed high-half multiplication (32-bit) |
+| `__riscv_pmulhru_w`    | `uint32x2_t __riscv_pmulhru_w(uint32x2_t rs1, int32x2_t rs2);`   | Rounded signed/unsigned multiplication (32-bit)  |
+| `__riscv_pmulhsu_w`    | `int32x2_t __riscv_pmulhsu_w(int16x4_t rs1, uint16x4_t rs2);`    | Signed/unsigned high-half multiplication         |
+| `__riscv_pmulhsu_w_h0` | `int32x2_t __riscv_pmulhsu_w_h0(int16x4_t rs1, uint16x4_t rs2);` | Signed/unsigned multiplication halfword 0        |
+| `__riscv_pmulhsu_w_h1` | `int32x2_t __riscv_pmulhsu_w_h1(int16x4_t rs1, uint16x4_t rs2);` | Signed/unsigned multiplication halfword 1        |
+| `__riscv_pmulhrsu_w`   | `uint32x2_t __riscv_pmulhrsu_w(uint32x2_t rs1, int32x2_t rs2);`  | Rounded signed/unsigned multiplication (32-bit)  |
 
 ## Register-pair Packed-SIMD Intrinsics(RV32 Only)
 
